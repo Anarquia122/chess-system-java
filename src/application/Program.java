@@ -10,6 +10,8 @@ import chess.ChessMatch;
 import chess.ChessPiece;
 import chess.ChessPosition;
 
+// para melhor experiência, execute o programa no GIT Bash a partir da pasta /bin do projeto.
+
 public class Program {
 	public static void main(String[] args) {
 		
@@ -41,7 +43,13 @@ public class Program {
 				
 				if (chessMatch.getPromoted() != null) {
 					System.out.print("Enter piece for promotion (B/N/R/Q): ");
-					String type = sc.nextLine();
+					String type = sc.nextLine().toUpperCase();
+					
+					while (!type.equals("B") && !type.equals("R") && !type.equals("Q") && !type.equals("N")) {
+						System.out.println("Invalid value! Enter piece for promotion (B/N/R/Q): ");
+						type = sc.nextLine().toUpperCase();
+					}
+					
 					chessMatch.replacePromotedPiece(type);
 				}
 			} catch (ChessException e) {
